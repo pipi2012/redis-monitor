@@ -4,15 +4,23 @@ import tornado.ioloop
 import tornado.web
 import re
 import redis
-
+from api.util import settings
 
 class InfoController(BaseController):
     def get(self):
         """Serves a GET request.
         """
+
         server = self.get_argument("server").split(':')
-        
-        redis_info = self.getStatsPerServer(server)
+
+	password = None
+	
+	for redis_server in settings.get_redis_servers():
+	  if (redis_server["server"] == server[0]) and (int(redis_server["port"]) == int(server[1])):
+            password = redis_server["password"]
+	    break
+ 
+        redis_info = self.getStatsPerServer(server, password)
         databases=[]
 
         for key in sorted(redis_info.keys()):
