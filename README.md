@@ -1,3 +1,5 @@
+NOTICE: This repository is no longer maintained, maybe some compatibility issue exists.
+
 redis-monitor
 ---------
 
