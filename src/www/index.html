@@ -187,7 +187,8 @@
 					html.push('<tr><td>'+item.time+'</td>\
 					<td>'+item.id+'</td>\
 					<td>'+item.escapeMs+'</td>\
-					<td>'+item.cmd+'</td></tr>');
+					<td>'+item.escapeMs+'</td>\
+					<td>'+item.client_address+'</td></tr>');
 				});
 				html.push('</tbody></table></div></div>');
 				return html.join('');

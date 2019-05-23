@@ -1,3 +1,9 @@
+fork from :https://github.com/LittlePeng/redis-monitor
+support:
+python 2.7
+Redis-4.1.1
+
+=============================================================
 NOTICE: This repository is no longer maintained, maybe some compatibility issue exists.
 
 redis-monitor

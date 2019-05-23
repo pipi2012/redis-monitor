@@ -30,7 +30,8 @@ class RedisStatsProvider(object):
                          hit_rate,
                          peak,
                          used)
-        self.conn.zadd(server +':'+ rediskey, score, data)
+        #self.conn.zadd(server +':'+ rediskey, score, data)
+        self.conn.zadd(server +':'+ rediskey, {data:score})
             
     def get_keys_info(self, server, from_date, to_date):
         data = []
@@ -60,7 +61,8 @@ class RedisStatsProvider(object):
     def save_status_info(self, server, timestamp, data):
         timestamp=datetime2_unix_int(timestamp)
         data['timestamp']=timestamp
-        self.conn.zadd(server + ":status", timestamp, json.dumps(data))
+        #self.conn.zadd(server + ":status", timestamp, json.dumps(data))
+        self.conn.zadd(server + ":status", {json.dumps(data):timestamp})
 
     def get_status_info(self, server, from_date, to_date):
         data = []
